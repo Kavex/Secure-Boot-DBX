@@ -21,7 +21,8 @@ https://uefi.org/revocationlistfile
 # Split DX (PS)
 
 Install-Script -Name SplitDbxContent -Force
-SplitDbxContent.ps1 "c:\temp\dbxupdate_x64.bin"
+
+SplitDbxContent.ps1 .\dbxupdate_x64.bin
 
 # Patch Secure Boot 
 
