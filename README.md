@@ -9,3 +9,23 @@ https://support.microsoft.com/en-us/topic/microsoft-guidance-for-applying-secure
 
 https://gist.github.com/out0xb2/f8e0bae94214889a89ac67fceb37f8c0
 
+
+# How to check (PS)
+
+[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match 'Microsoft Corporation UEFI CA 2011'
+
+# Download DBX
+
+https://uefi.org/revocationlistfile
+
+# Split DX (PS)
+
+Install-Script -Name SplitDbxContent -Force
+SplitDbxContent.ps1 "c:\temp\dbxupdate_x64.bin"
+
+# Patch Secure Boot 
+
+Set-SecureBootUefi -Name dbx -ContentFilePath .\content.bin -SignedFilePath .\signature.p7 -Time 2010-03-06T19:17:21Z -AppendWrite
+
+
+
